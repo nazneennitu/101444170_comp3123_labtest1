@@ -1,22 +1,26 @@
-console.log("Running lowerCaseWords.js");
-
-
-function lowerCaseWords(arr) {
+function lowerCaseWords(mixedArray) {
     return new Promise((resolve, reject) => {
-        if (!Array.isArray(arr)) {
-            return reject(new Error("Input must be an array."));
+        
+        if (!Array.isArray(mixedArray)) {
+            reject(new Error("Input must be an array"));
+            return;
         }
 
-        const lowerCaseStrings = arr
-            .filter(item => typeof item === 'string') // Filter for strings
-            .map(item => item.toLowerCase()); // Convert to lowercase
+      
+        const lowerCasedWords = mixedArray
+            .filter(item => typeof item === 'string') 
+            .map(item => item.toLowerCase()); 
 
-        resolve(lowerCaseStrings); // Resolve the promise with the result
+        resolve(lowerCasedWords);
     });
 }
 
-// Example usage:
-const mixedArray = ['PIZZA', 10, true, 25, false, 'WINGS'];
+
+const mixedArray = ['PIZZA', 10, true, 25, false, 'Wings'];
 lowerCaseWords(mixedArray)
-    .then(result => console.log(result)) // Output: ['pizza', 'wings']
-    .catch(error => console.error(error.message));
+    .then(result => {
+        console.log("Lowercased words:", result);
+    })
+    .catch(error => {
+        console.error("Error:", error.message);
+    });

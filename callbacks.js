@@ -1,4 +1,4 @@
-// callbacks.js
+
 
 const delayedSuccess = () =>
     setTimeout(() => {
@@ -15,7 +15,7 @@ const delayedException = () =>
         }
     }, 500);
 
-// New promise functions
+
 function resolvedPromise() {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -32,11 +32,11 @@ function rejectedPromise() {
     });
 }
 
-// Example usage:
+
 resolvedPromise()
-    .then(message => console.log(message)) // Output: { message: "delayed success!" }
+    .then(message => console.log(message))
     .catch(error => console.error(error.message));
 
 rejectedPromise()
     .then(message => console.log(message))
-    .catch(error => console.error(error.message)); // Output: error: delayed exception!
+    .catch(error => console.error(error.message));
